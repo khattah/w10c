@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>W10C JavaScript Events</title>
+
+    <!-- Connect our JavaScript file -->
+    <script src="app.js" defer></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f1f5f9;
+            padding: 30px;
+            transition: background-color 1s;
+        }
+
+        .card {
+            background-color: white;
+            padding: 20px;
+            margin: 15px auto;
+            max-width: 500px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            padding: 12px 20px;
+            cursor: pointer;
+        }
+
+        #moving-box {
+            width: 70px;
+            height: 70px;
+            background-color: orange;
+            margin: 30px auto;
+            transition: transform 0.5s;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>W10C JavaScript Events</h1>
+
+    <p>Interact with the page to see JavaScript work!</p>
+
+    <!-- Event 1: Single click -->
+    <div class="card">
+        <h2>Click Event</h2>
+        <button id="click-button">Click Me</button>
+        <p id="click-message">Waiting for a click.</p>
+    </div>
+
+    <!-- Event 2: Double click -->
+    <div class="card">
+        <h2>Double Click Event</h2>
+        <button id="double-button">Double Click Me</button>
+        <p id="double-message">Waiting for two clicks.</p>
+    </div>
+
+    <!-- Event 3: Mouse hover -->
+    <div class="card" id="hover-box">
+        <h2>Mouse Hover Event</h2>
+        <p id="hover-message">Move your mouse here!</p>
+    </div>
+
+    <!-- Event 4: Space key -->
+    <div class="card">
+        <h2>Keyboard Event</h2>
+        <p id="space-message">Press the SPACE key.</p>
+    </div>
+
+    <!-- Bonus: Timed events -->
+    <div class="card">
+        <h2>Bonus: Timer Events</h2>
+        <p>The page background changes after 15 seconds.</p>
+        <p>The orange box moves every 3 seconds.</p>
+        <div id="moving-box"></div>
+    </div>
+
+    <!-- Bonus: Secret keyboard challenge -->
+    <div class="card">
+        <h2>Secret Challenge</h2>
+        <p>Type the letters of SECRET in any order.</p>
+        <div id="secret-message"></div>
+    </div>
+
+</body>
+</html>
