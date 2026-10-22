@@ -155,4 +155,62 @@ document.body.addEventListener("keydown", function(event) {
         // Insert the paragraph onto the page.
         secretMessage.appendChild(newParagraph);
     }
+    // BONUS 1: Change the background once after 15 seconds.
+window.addEventListener("load", function () {
+  setTimeout(function () {
+    document.body.style.backgroundColor = "peachpuff";
+
+    document.getElementById("timer-message").textContent =
+      "15 seconds passed! The background changed.";
+  }, 15000);
 });
+
+// BONUS 2: Move the box randomly every 3 seconds.
+const movementArea = document.getElementById("movement-area");
+const movingBox = document.getElementById("moving-box");
+
+setInterval(function () {
+  // Calculate how far the box can move without leaving its container.
+  const maxX = movementArea.clientWidth - movingBox.offsetWidth;
+  const maxY = movementArea.clientHeight - movingBox.offsetHeight;
+
+  const randomX = Math.random() * Math.max(0, maxX);
+  const randomY = Math.random() * Math.max(0, maxY);
+
+  movingBox.style.transform =
+    `translate(${randomX}px, ${randomY}px)`;
+}, 3000);
+
+// BONUS 3: Detect all letters of "secret" in any order.
+// There are two E letters, so E must be pressed twice.
+const remainingLetters = ["s", "e", "c", "r", "e", "t"];
+
+document.body.addEventListener("keydown", function (event) {
+  // Holding a key down should not count as multiple presses.
+  if (event.repeat) {
+    return;
+  }
+
+  const pressedKey = event.key.toLowerCase();
+  const letterIndex = remainingLetters.indexOf(pressedKey);
+
+  // Ignore keys that are not needed.
+  if (letterIndex === -1) {
+    return;
+  }
+
+  // Remove only one matching letter.
+  remainingLetters.splice(letterIndex, 1);
+
+  if (remainingLetters.length === 0) {
+    const secretMessage = document.createElement("p");
+
+    secretMessage.textContent = "You found the secret";
+    secretMessage.style.backgroundColor = "gold";
+    secretMessage.style.padding = "20px";
+    secretMessage.style.fontWeight = "bold";
+
+    document.body.appendChild(secretMessage);
+  }
+})
+
